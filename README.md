@@ -179,18 +179,3 @@ RAG-powered Recruiter Assistant
 ## Naveen Singh Rawat
 
 AI Candidate Discovery & Ranking Engine
-
-
-Now GitHub will render it correctly:
-✅ Tech Stack as sections  
-✅ Project tree with formatting  
-✅ Commands with syntax highlighting  
-✅ Future enhancements as bullets  
-✅ Author section properly styled
-
-Then:
-
-```powershell
-git add README.md
-git commit -m "Fixed README markdown formatting"
-git push origin main
