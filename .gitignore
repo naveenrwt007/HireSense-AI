@@ -1,0 +1,11 @@
+venv/
+__pycache__/
+*.pyc
+
+outputs/
+
+.streamlit/
+
+# Large generated files
+models/candidate_embeddings.npy
+models/candidate_index.faiss
