@@ -2,6 +2,7 @@ import json
 import faiss
 import numpy as np
 from sentence_transformers import SentenceTransformer
+from huggingface_hub import hf_hub_download
 from jd_parser import parse_jd
 
 # -----------------------------
@@ -136,28 +137,55 @@ def final_score(
 # -----------------------------
 
 print("Loading model...")
+
 model = SentenceTransformer(
     "BAAI/bge-small-en-v1.5"
 )
 
-print("Loading FAISS...")
-index = faiss.read_index(
-    "models/candidate_index.faiss"
+print("Downloading artifacts from Hugging Face...")
+
+index_path = hf_hub_download(
+    repo_id="naveenrwt007/hiresense-models",
+    filename="candidate_index.faiss"
 )
 
-with open(
-    "models/candidate_ids.json",
-    "r",
-    encoding="utf-8"
-) as f:
-    candidate_ids = json.load(f)
+ids_path = hf_hub_download(
+    repo_id="naveenrwt007/hiresense-models",
+    filename="candidate_ids.json"
+)
+
+lookup_path = hf_hub_download(
+    repo_id="naveenrwt007/hiresense-models",
+    filename="candidate_lookup.json"
+)
+
+print("Loading FAISS index...")
+
+index = faiss.read_index(
+    index_path
+)
+
+print("Loading candidate IDs...")
 
 with open(
-    "models/candidate_lookup.json",
+    ids_path,
     "r",
     encoding="utf-8"
 ) as f:
+
+    candidate_ids = json.load(f)
+
+print("Loading candidate lookup...")
+
+with open(
+    lookup_path,
+    "r",
+    encoding="utf-8"
+) as f:
+
     lookup = json.load(f)
+
+print("HireSense AI Ready ✓")
 
 
 # -----------------------------
