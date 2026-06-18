@@ -1,11 +1,9 @@
 venv/
 __pycache__/
-*.pyc
-
 outputs/
 
-.streamlit/
+models/
+artifacts/
 
-# Large generated files
-models/candidate_embeddings.npy
-models/candidate_index.faiss
+*.faiss
+*.npy
