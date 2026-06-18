@@ -4,8 +4,6 @@ __pycache__/
 
 outputs/
 
-.streamlit/
-
-# Large generated files
 models/candidate_embeddings.npy
 models/candidate_index.faiss
+models/candidate_lookup.json
